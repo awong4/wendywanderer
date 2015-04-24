@@ -98,3 +98,13 @@ insert into city(name, country) values
         ('Budapest','Hungary'),
         ('Beijing','China'),
         ('Tokyo','Japan');
+
+insert into trip(ownerID,startDate,endDate,cityID) values
+        (1,'2015-01-01','2015-02-01',1),
+        (1,'2015-01-02','2015-02-01',2),
+        (1,'2015-01-03','2015-02-01',3),
+        (1,'2015-01-04','2015-02-01',4),
+        (1,'2015-01-05','2015-02-01',5);
+
+insert into review(cityID,contactID,review) values
+        (1,1,'wow so pretty');

@@ -56,7 +56,7 @@ function insertReview(){
 	    $cid = $row['id'];
 	    // echo "ID: $cid";
 	    $contact = 1;
-	    $values = array($cid,$contact,$review);
+	    $values = array($cid,$contact,htmlspecialchars($review,ENT_COMPAT,"UTF-8"));
 	    $resultreview = prepared_query($dbh,$sql,$values);
     } else {
 		 echo "<p> Please fill out all the form data fields";
