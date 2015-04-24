@@ -48,26 +48,25 @@ insertTrip();
 
 function insertTrip(){
 
-		if(isset($_GET['city']) and $_GET['city'] == 'novalue') {
-			echo "<p> Please select a city";
-		} else if(isset($_GET['startdate']) and isset($_GET['enddate'])){
-			global $dbh;
+	if(isset($_GET['city']) and $_GET['city'] == 'novalue') {
+		echo "<p> Please select a city";
+	} else if(isset($_GET['startdate']) and isset($_GET['enddate'])) {
+		global $dbh;
 
-		    $sql = "INSERT INTO trip(ownerID,startDate,endDate,cityID) values (?,?,?,?)";
-		    $owner = 1;
-		 	$start = $_GET['startdate'];
-		 	$end = $_GET['enddate'];
-		    $city = $_GET['city'];
+	    $sql = "INSERT INTO trip(ownerID,startDate,endDate,cityID) values (?,?,?,?)";
+	    $owner = 1;
+	 	$start = $_GET['startdate'];
+	 	$end = $_GET['enddate'];
+	    $city = $_GET['city'];
 
-		    $result = getID($city);
-		    $row = $result->fetchRow(MDB2_FETCHMODE_ASSOC);
-		    $id = $row['id'];
-		    // echo "ID: $id";
-		    $values = array($owner,$start,$end,$id);
-		    $resultname = prepared_query($dbh,$sql,$values);
-		    // echo "$city";
-	    }
-	else {
+	    $result = getID($city);
+	    $row = $result->fetchRow(MDB2_FETCHMODE_ASSOC);
+	    $id = $row['id'];
+	    // echo "ID: $id";
+	    $values = array($owner,$start,$end,$id);
+	    $resultname = prepared_query($dbh,$sql,$values);
+	    // echo "$city";
+    } else {
 		 echo "<p> Please fill out all the form data fields";
 	}
 }
