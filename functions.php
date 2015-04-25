@@ -1,3 +1,8 @@
+<!--
+Functions.php - File to put all the functions
+so that we can  use them in multiple files
+-->
+
 <?php
 
 require_once("MDB2.php");
@@ -6,6 +11,9 @@ require_once('wendy-dsn.inc');
 
 $dbh = db_connect($wendy_dsn);
 
+//Function to get the city's info
+//Input: city id & Output: the row (there should only 
+//be one, ids are unique)
 function getCityInfo($cityid){
 	global $dbh;
 	$cityinfosql = "SELECT name FROM city where id = ?";
@@ -15,25 +23,32 @@ function getCityInfo($cityid){
 	return $cityinforow;
 }
 
-function getOwnerInfo($tripowner){
+//Function to get the person's info
+//Input: userid & Output: the row (there should only be
+//one, ids are unique)
+function getPersonInfo($personid){
 	global $dbh;
-	$ownersql = "SELECT name, email from user where id=?";
-	$ownerdata = array($tripowner);
-	$ownerresult = prepared_query($dbh, $ownersql, $ownerdata);
-	$ownerresultrow = $ownerresult -> fetchRow(MDB2_FETCHMODE_ASSOC);	
+	$personsql = "SELECT name, email from user where id=?";
+	$persondata = array($personid);
+	$personresult = prepared_query($dbh, $personsql, $persondata);
+	$personresultrow = $personresult -> fetchRow(MDB2_FETCHMODE_ASSOC);	
 
-	return $ownerresultrow;
+	return $personresultrow;
 }
 
 //Function to display posting informations
+//Sets the city to % if none provided and the start/end date
+//to the current date if it is not provided by the user
+//Input: start date, end date and cityid & Output: resultset
 function getPostingInfo($startdate, $enddate, $cityid){
 	global $dbh;
 	if (strcmp($cityid, "novalue") == 0){
 		$cityid = "%";
 	}
-
+	
+	//If only one of them was filled out
 	if ((strcmp($startdate, "") == 0) xor (strcmp($enddate, "")==0)){
-		if(strcmp($startdate, "") == 0) {
+		if(strcmp($startdate, "") == 0) { //If a start date is not provided and an end is
 			//Will only show postings the end date between today and anytime in future 
 			$startdate = date('Y-m-d');
 			$tripinfosql = "SELECT * FROM trip
@@ -41,7 +56,7 @@ function getPostingInfo($startdate, $enddate, $cityid){
 				AND enddate BETWEEN ? and ?";
 			$tripinfodata = array($cityid, $startdate, $enddate);
 
-		}else { //(strcmp($enddate, "") == 0)
+		}else { //If an enddate is not provided but a startdate is
 			$enddate = date('Y-m-d');
 			$tripinfosql = "SELECT * FROM trip
 				WHERE cityID like ?
@@ -49,7 +64,7 @@ function getPostingInfo($startdate, $enddate, $cityid){
 			$tripinfodata = array($cityid, $startdate, $enddate);
 
 		}
-	} else if ((strcmp($startdate, "") == 0) xor (strcmp($enddate, "")==0)){ //both start and end date are filled out
+	} else if (!(strcmp($startdate, "") == 0) and !(strcmp($enddate, "")==0)){ //both start and end date are filled out
 
 		$tripinfosql = "SELECT * FROM trip 
 			WHERE cityID like ?
@@ -57,7 +72,7 @@ function getPostingInfo($startdate, $enddate, $cityid){
 			AND endDate BETWEEN ? AND ? ";
 
 		$tripinfodata = array($cityid, $startdate, $enddate, $startdate, $enddate);
-	} else {
+	} else { //Otherwise, just show all the results based on the cityid provided, if any
 		$tripinfosql = "SELECT * FROM trip WHERE cityID like ?";
 		$tripinfodata = array($cityid);
 
@@ -66,18 +81,20 @@ function getPostingInfo($startdate, $enddate, $cityid){
 	return $tripinforesult;
 }
 
-//
-function getReviews($reviewkeyword, $city){
+//Function to get the reviews from the db
+//Sets variables to % if nothing was submitted for that field
+//Input: keyword and cityid & Output: result set 
+function getReviews($reviewkeyword, $cityid){
 	global $dbh;
-		if(strcmp($city, "novalue") == 0) {
-			$city = '%';
+		if(strcmp($cityid, "novalue") == 0) {
+			$cityid = '%';
 		}
 
 		if(strcmp($reviewkeyword, "") == 0) {
 			$reviewkeyword = '%';
 		}
 		$reviewinfosql = "SELECT * from review where cityID like ? and review like concat('%',?,'%')";
-		$reviewinfodata = array($city, $reviewkeyword);	
+		$reviewinfodata = array($cityid, $reviewkeyword);	
 	$reviewinforesult = prepared_query($dbh, $reviewinfosql, $reviewinfodata);
 	return $reviewinforesult;
 }

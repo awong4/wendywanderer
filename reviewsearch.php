@@ -18,7 +18,7 @@ if(isset($_GET['keyword']) or isset($_GET['cityid'])){
 		$cityresultrow = getCityInfo($filteredreviewsrow['cityID']);
 		$cityname = $cityresultrow['name'];
 
-		$reviewerresult = getOwnerInfo($filteredreviewsrow['contactID']);
+		$reviewerresult = getPersonInfo($filteredreviewsrow['contactID']);
 		$reviewername = $reviewerresult['name'];
 
 		$reviewtext = $filteredreviewsrow['review'];

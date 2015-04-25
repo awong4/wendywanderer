@@ -27,7 +27,7 @@ if(isset($_GET['startdate']) or isset($_GET['enddate']) or isset($_GET['cityid']
 		$tripend = $filteredtripsrow['endDate'];
 
 		//Get the Owner Contact
-		$tripownerresultrow = getOwnerInfo($filteredtripsrow['ownerID']);
+		$tripownerresultrow = getPersonInfo($filteredtripsrow['ownerID']);
 		$tripownername = $tripownerresultrow['name'];
 		$tripowneremail = $tripownerresultrow['email']."@wellesley.edu";
 

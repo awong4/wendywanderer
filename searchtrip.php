@@ -33,11 +33,12 @@
 ?>
 
 
-<a href="home.html"> Home </a><br>
-<a href="signup.html"> Signup </a> <br>
-<a href="login.html"> Login </a> <br>
-<a href="findatrip.html"> Find a Trip </a> <br>
-<a href="recommendations.html"> Recommendations </a>
+<a href="home.php"> Home </a><br>
+<a href="login.php"> Login </a> <br>
+<a href="posttrip.php">Post a Trip </a> <br>
+<a href="searchtrip.php"> Browse Trips </a> <br>
+<a href="postreview.php">Post a Review </a> <br>
+<a href="searchreview.php">Browse reviews </a> <br>
 
 
 </body>

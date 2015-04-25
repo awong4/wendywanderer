@@ -29,5 +29,14 @@
 <?php
         include_once("reviewsearch.php");
 ?>
+
+<a href="home.php"> Home </a><br>
+<a href="login.php"> Login </a> <br>
+<a href="posttrip.php">Post a Trip </a> <br>
+<a href="searchtrip.php"> Browse Trips </a> <br>
+<a href="postreview.php">Post a Review </a> <br>
+<a href="searchreview.php">Browse reviews </a> <br>
+
+
 </body>
 </html>
