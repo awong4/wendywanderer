@@ -1,14 +1,12 @@
 <html>
 <head>
 <title> Wendy Wanderer </title>
+<?php
+	include("signup.php");
+?>
 </head>
 <body>
 <h1> Welcome to Wendy Wanderer - Sign Up</h1>
-
-<?php
-	include("signup.php");
-
-?>
 
 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 <div class="overall">
@@ -18,8 +16,8 @@
 
 <br>
 
-<label>Email </label>
-<input type="email" name="email" required>
+<label>Wellesley Domain Name </label>
+<input type="text" name="email" required>
 
 <br>
 
@@ -37,9 +35,8 @@
 </div>
 </form>
 
-<a href="home.html"> Home </a><br>
-<a href="signup.html"> Signup </a> <br>
-<a href="login.html"> Login </a> <br>
+<a href="home.php"> Home </a><br>
+<a href="login.php"> Login </a> <br>
 <a href="findatrip.html"> Find a Trip </a> <br>
 <a href="recommendations.html"> Recommendations </a>
 

@@ -3,10 +3,10 @@ Modeling our travel based web app
 */
 
 -- drop tables if exists to start afresh
-drop table if exists recommendation;
+
 drop table if exists photoalbum;
 drop table if exists buddy;
-
+drop table if exists review;
 drop table if exists trip;
 
 drop table if exists user;
@@ -19,12 +19,13 @@ create table user (
         password varchar(125) NOT NULL, -- Not sure how long crypt() outputs
         phonenum int,
         email varchar(50) NOT NULL,
-        homeCity varchar(15),
+	homeCity varchar(15),
         homeCountry varchar(15),
         rating decimal(2,1),
         index(id)
 )
 ENGINE=InnoDB;
+
 
 create table city (
         -- auto increment the key so we don't over write
@@ -33,6 +34,28 @@ create table city (
         country varchar(15) NOT NULL,
         description varchar(50) default NULL, /* will be implemented if we have time*/
         index(id)
+)
+ENGINE=InnoDB;
+
+create table photoalbum (
+        userID int NOT NULL,
+        primary key (userID),
+        index (userID),
+        foreign key(userID) references user(id) on delete cascade        
+        /* we don't yet know how to upload files */
+)
+ENGINE=InnoDB;
+
+
+create table review (
+        cityID int NOT NULL,
+        contactID int NOT NULL,
+        review text,
+        primary key (cityID,contactID),
+        index(cityID),
+        index(contactID),
+        foreign key(cityID) references city(id) on delete cascade,       
+        foreign key(contactID) references user(id) on delete cascade
 )
 ENGINE=InnoDB;
 
@@ -63,26 +86,8 @@ create table buddy (
 )
 ENGINE=InnoDB;
 
-create table photoalbum (
-        userID int NOT NULL,
-        primary key (userID),
-        index (userID),
-        foreign key(userID) references user(id) on delete cascade        
-        /* we don't yet know how to upload files */
-)
-ENGINE=InnoDB;
-
-create table recommendation(
-	review text,
-        cityID int NOT NULL,
-        contactID int NOT NULL,
-        primary key (cityID,contactID),
-        index(cityID),
-        index(contactID),
-        foreign key(cityID) references city(id) on delete cascade,       
-        foreign key(contactID) references user(id) on delete cascade
-)
-ENGINE=InnoDB;
+insert into user(name,password,email) values
+        ('Carissa','123','test');
 
 -- initialize the database with cities
 insert into city(name, country) values
@@ -93,3 +98,13 @@ insert into city(name, country) values
         ('Budapest','Hungary'),
         ('Beijing','China'),
         ('Tokyo','Japan');
+
+insert into trip(ownerID,startDate,endDate,cityID) values
+        (1,'2015-01-01','2015-02-01',1),
+        (1,'2015-01-02','2015-02-01',2),
+        (1,'2015-01-03','2015-02-01',3),
+        (1,'2015-01-04','2015-02-01',4),
+        (1,'2015-01-05','2015-02-01',5);
+
+insert into review(cityID,contactID,review) values
+        (1,1,'wow so pretty');
