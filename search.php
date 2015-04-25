@@ -1,7 +1,8 @@
 <!--
 To do later:
 - filter out the ones that already have happened
-
+- filter out the bad ones (i.e. the ones with 0000-00-00 as yrs)
+  in the case that all of them display
 -->
 
 <?php
@@ -11,12 +12,14 @@ require_once('wendy-dsn.inc');
 
 $dbh = db_connect($wendy_dsn);
 
+//Check to see if one of them is filled out
 if(isset($_GET['startdate']) or isset($_GET['enddate']) or isset($_GET['cityid'])) {
-	//Filter through them
+	//Get each of part of the form
 	$startdate = $_GET['startdate'];
 	$enddate = $_GET['enddate'];
 	$cityid = $_GET['cityid'];
 
+	//Filter the results and loop through to display them
 	$filteredtrips = getPostingInfo($startdate, $enddate, $cityid);
 
 	echo "<h4> Search Results </h4>";

@@ -8,6 +8,8 @@
 <body>
 <h1> Welcome to Wendy Wanderer - Sign Up</h1>
 
+<p> Note: Your passowrd is not your your regular wellesley domain password</p>
+<p> It is highly unadvised to use your regular wellesley domain password for this site </p>
 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 <div class="overall">
 
