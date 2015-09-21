@@ -1,0 +1,43 @@
+#logo {
+	font-family: 'Pacifico', cursive;
+	color:#CD2C24;
+	font-size: 175%;
+	/*
+	#CD2C24
+	#F3594B
+	#F2836B
+	#F2E1AC
+	#63A69F
+	*/
+}
+
+h1{
+	font-family: 'Pacifico', cursive;
+	color:#CD2C24;
+}
+
+.navbar {
+	background-color: #F2E1AC;
+	font-family: 'Oxygen', sans-serif;
+	font-weight: 300;
+}
+
+body{
+	/*padding-top: 70px;*/
+	padding-top: 5%;
+	font-family: 'Oxygen', sans-serif;
+}
+
+/* The left side of the table */
+#searchdiv {
+	border: 2px solid #F2E1AC;
+	border-radius: 50px; /* make edges round */ 
+	text-align: center;
+	padding: 15px;
+}
+
+/* The right side of the table */
+#resultsdiv {
+	border-radius: 25px;
+	padding-left: 25px;
+}

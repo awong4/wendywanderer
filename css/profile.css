@@ -1,0 +1,62 @@
+#logo {
+	font-family: 'Pacifico', cursive;
+	color:#CD2C24;
+	font-size: 175%;
+	/*
+	#CD2C24
+	#F3594B
+	#F2836B
+	#F2E1AC
+	#63A69F
+	*/
+}
+
+h1{
+	font-family: 'Pacifico', cursive;
+	color:#CD2C24;
+}
+
+h4 {
+	font-family: 'Pacifico', cursive;
+	color:#CD2C24;
+}
+
+.navbar {
+	background-color: #F2E1AC;
+	font-family: 'Oxygen', sans-serif;
+	font-weight: 300;
+}
+
+body{
+	/*padding-top: 70px;*/
+	padding-top: 5%;
+	font-family: 'Oxygen', sans-serif;
+}
+
+
+#personinfo{
+	border: 2px solid #F2E1AC;
+	border-radius: 30px; /* make edges round */ 
+	padding: 15px;
+	width: 20%;
+}
+
+#ownedtrips {
+	border: 2px solid #F2E1AC;
+	border-radius: 30px; /* make edges round */ 
+	padding: 15px;
+	width: 20%;
+}
+
+#buddytrips {
+	border: 2px solid #F2E1AC;
+	border-radius: 30px; /* make edges round */ 
+	padding: 15px;
+	width: 20%;
+}
+
+#myphotos {
+	border: 2px solid #F2E1AC;
+	border-radius: 30px; /* make edges round */ 
+	padding: 15px;
+}

@@ -1,40 +1,39 @@
+<!-- login.php
+A page where users can login to their accounts -->
+
 <html>
 <head>
+	<link href='http://fonts.googleapis.com/css?family=Pacifico|Oxygen:400,300' rel='stylesheet' type='text/css'>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 <title> Wendy Wanderer </title>
-</head>
-<body>
-<h1> Welcome to Wendy Wanderer - Login</h1>
-
 <?php
 	include("acclogin.php");
-
 ?>
+</head>
 
-<form action="" method="POST">
-<div class="overall">
-<label>Wellesley domain name </label>
-<input type="text" name="email" required>
+<body>
+	<link rel="stylesheet" href="css/homestyle.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-<br>
 
-<label>Password </label>
-<input type="password" name="password" required>
-
-<br>
-
-<input type="submit" name="submit" value="submit">
+<div class="circle">
+	<div class="login">
+		<br><br><br><br><br>
+	<h2> Wendy Wanderer</h2>
+		<form action="" method="POST">
+			<div id="box">
+			<label>Wellesley domain name </label>
+			<input type="text" name="email" required>
+			<br>
+			<label>Password </label>
+			<input type="password" name="password" required>
+			<br>
+			<input type='submit' name='submit' value='submit'><br/>
+			</div>
+		</form>
+	</div>
 </div>
-</form>
-
-
-
-<a href="home.php"> Home </a><br>
-<a href="login.php"> Login </a> <br>
-<a href="posttrip.php">Post a Trip </a> <br>
-<a href="searchtrip.php"> Browse Trips </a> <br>
-<a href="postreview.php">Post a Review </a> <br>
-<a href="searchreview.php">Browse reviews </a> <br>
-
 </body>
 
 </html>

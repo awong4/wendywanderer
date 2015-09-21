@@ -1,18 +1,30 @@
+<!-- searchreview.php
+Searches through the reviews based on criteria
+or displays them all -->
+
 <html>
 <head>
+	<link href='http://fonts.googleapis.com/css?family=Pacifico|Oxygen:400,300' rel='stylesheet' type='text/css'>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 <title> Wendy Wanderer </title>
 </head>
 <body>
-<h1> Welcome to Wendy Wanderer - Find A Trip</h1>
+	<link rel="stylesheet" href="css/search.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 <?php
-	include_once("functions.php");
+include("navbar.php");
 ?>
+<!-- styling -->
+<table border=0 cols="2" width="100%">
+<tr><td valign="top" width="30%" id='searchdiv'>
+<h1> Find a Review</h1>
 <!-- Search function -->
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="GET">
-<div> <p> <h3> Find a Trip </h3> </p>
-<p> Enter a keyword you would like us to find! </p>
+<div>
+<p> If you don't have a particular review or city in mind, click submit to see all of them </p> 
+<p> Enter a keyword or phrase you would like us to find: </p>
 <input type="text" name="keyword">
-
 
 <p>Select the city:</p>
 <select name='cityid' id='tableselect'>
@@ -23,20 +35,13 @@
 <input type="submit" value="submit">
 </div>
 </form>
+</td>
+
 
 <!-- Get all the reviews -->
 
 <?php
-        include_once("reviewsearch.php");
+       include_once("relevantreviews.php");
 ?>
-
-<a href="home.php"> Home </a><br>
-<a href="login.php"> Login </a> <br>
-<a href="posttrip.php">Post a Trip </a> <br>
-<a href="searchtrip.php"> Browse Trips </a> <br>
-<a href="postreview.php">Post a Review </a> <br>
-<a href="searchreview.php">Browse reviews </a> <br>
-
-
 </body>
 </html>

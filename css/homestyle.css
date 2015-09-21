@@ -1,0 +1,123 @@
+#logo {
+	font-family: 'Pacifico', cursive;
+	/*color:#CD2C24;*/
+	color:white;
+	font-size: 175%;
+	/*
+	#CD2C24
+	#F3594B
+	#F2836B
+	#F2E1AC
+	#63A69F
+	*/
+}
+
+#note {
+	font-size: smaller;
+}
+
+label{
+	font-size: small;
+}
+
+#box{
+	position: absolute;
+	text-align: right;
+}
+
+.navbar-right a {
+	color: white;
+	font-weight: bold;
+    border: 0 none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: none;
+    margin-top: 10px;
+}
+
+
+title{
+	font-size: 90%;
+}
+
+body{
+	padding-top: 70px;
+	font-family: 'Oxygen', sans-serif;
+	font-weight: 400;
+	font-weight: bold;
+	/*background-image: url("lamps.jpg");
+	background-size: 100% auto;*/
+	color:black;
+}
+
+body::after{
+	content: "";
+	background-image: url("lamps.jpg");
+	background-size: 100% auto;
+	opacity: 0.85;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;   
+}
+
+h2{
+    font-family: 'Pacifico', cursive;
+	/*color:#F3594B;*/
+	/*color: #63A69F;*/
+    color:white;
+    font-size: 260%;
+
+}
+
+.about{
+	position: absolute;
+	display:inline-block;
+	width:70%;
+	height:80%;
+	display:none;
+}
+
+.signup{
+	position: absolute;
+	display:inline-block;
+	width: 80%;
+	height: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	display:show;
+
+}
+
+#switchlink{
+	position: absolute;
+	bottom: 20%;
+	left: 35%;
+}
+
+.login{
+	display: inline-block;
+}
+
+a {
+	display:inline-block;
+
+}
+
+.circle{
+    width: 42%;
+    height: 73%;
+    /*background-color:rgba(242,131,107,0.5);*/
+    background-color:rgba(255,255,255,0.4);
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
+    vertical-align:middle;
+    position: relative;
+
+    -webkit-border-radius: 100%; /* Safari, Chrome */
+       -moz-border-radius: 100%; /* Firefox */
+            border-radius: 100%; /* CSS3 */
+}

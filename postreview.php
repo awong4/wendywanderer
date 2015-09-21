@@ -1,68 +1,51 @@
+<!-- postreview.php
+Allows users to post trips -->
+
 <html>
 <head>
-<title> Wendy Wanderer </title>
+	<link href='http://fonts.googleapis.com/css?family=Pacifico|Oxygen:400,300' rel='stylesheet' type='text/css'>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<title> Wendy Wanderer </title>
 </head>
 <body>
-<h1> Welcome to Wendy Wanderer -  Reviews</h1>
+	<link rel="stylesheet" href="css/post.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
-<p> This page is used to add a review to the city you went to
+<?php
+	include("navbar.php");
+?>
 
-<form method='GET' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
-	<input type="text" name='review' id='textinput'> <br>
+<table border=0 cols="2" width="100%">
+<tr><td valign="top" width="30%" id='postdiv'>
+
+<h1> Post a Review</h1>
+<p> This page is used to add a review to the city you went to </p>
+<p> Please fill out all the form data fields </p>
+
+<form method='POST' enctype="multipart/form-data" action='<?php echo $_SERVER['PHP_SELF']; ?>'>
+	
 	<!-- ask the user to select a city from the list -->
-    City: <select name='city' id='tableselect'>
+	City: <select name='city' id='tableselect'>
     	<option value='novalue'> Please select a city
     	<?php
-        	include('functions.php');
         	getAllCities();
 	    ?>
 	</select>
+	<br>
+	<br>
+	<!-- text box to write the review -->
+	<textarea rows = '5' cols = '50' type="text" name='review' id='textinput'></textarea> <br>
 
         <input type="submit" value="submit" id='submitbutton'>
 </form>
 
+</td></tr></table>
+
 <?php
-
-require_once("MDB2.php");
-require_once("/home/cs304/public_html/php/MDB2-functions.php");
-require_once('wendy-dsn.inc');
-
-$dbh = db_connect($wendy_dsn);
-
 insertReview();
-
-function insertReview(){
-
-	if(isset($_GET['city']) and $_GET['city'] == 'novalue') {
-			echo "<p> Please select a city";
-	} else if (isset($_GET['review'])) {
-		// get the database handle
-		global $dbh;
-
-	    $sql = "INSERT INTO review(cityID,contactID,review) values (?,?,?)";
-	    $review = $_GET['review'];
-	    $city = $_GET['city'];
-	    // $contact = 1;
-	    $contact = $_COOKIE['userID'];
-	    $values = array($city,$contact,htmlspecialchars($review));
-	    $resultreview = prepared_query($dbh,$sql,$values);
-    } else {
-		 echo "<p> Please fill out all the form data fields";
-	}
-}
-
 ?>
 
 <p>
-
-<a href="home.php"> Home </a><br>
-<a href="login.php"> Login </a> <br>
-<a href="posttrip.php">Post a Trip </a> <br>
-<a href="searchtrip.php"> Browse Trips </a> <br>
-<a href="postreview.php">Post a Review </a> <br>
-<a href="searchreview.php">Browse reviews </a> <br>
 </body>
-
-
-
 </html>

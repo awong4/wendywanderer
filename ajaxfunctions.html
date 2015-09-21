@@ -1,0 +1,41 @@
+<!-- this is the file used for the ajax buttons -->
+
+<script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+
+//this function is used to insert a buddy into the buddy table
+function insertBuddy(tid,uid,bid){
+	$.ajax({
+	url:'insert.php',
+	type:'get',
+	data: {tid:tid,uid:uid,bid:bid},
+	success: function(data){
+	alert("You've been added to the trip. Refresh to see latest updates.");
+	}
+	});
+}
+
+//this function is used to delete yourself as a buddy in the buddy table
+function deletebuddy(tid,bid){
+	$.ajax({
+	url:'deletebuddy.php',
+	type:'get',
+	data: {tid:tid,bid:bid},
+	success: function(data){
+	alert("You've deleted yourself from the trip. Refresh to see latest updates.");
+	}
+	});
+}
+
+//this function is used when you're the user to delete a trip from the trip table
+function deletetrip(tid){
+	$.ajax({
+	url:'deletetrip.php',
+	type:'get',
+	data: {tid:tid},
+	success: function(data){
+	alert("You've deleted the trip. Refresh to see latest updates.");
+	}
+	});
+}
+</script>
